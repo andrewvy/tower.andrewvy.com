@@ -1,2 +1,3 @@
-- roles:
+- hosts: nodejs
+  roles:
      - olibob.nodejs
