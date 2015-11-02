@@ -1,3 +1,2 @@
-- hosts: droplets
-  roles:
+- roles:
      - olibob.nodejs
