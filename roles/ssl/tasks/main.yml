@@ -1,0 +1,14 @@
+---
+- name: Create Ansible SSL Directry
+  file: dest=/etc/ssl/ansible mode=0700 state=directory owner=puppeteer
+  register: ssldir
+
+- name: Upload Unencrypted Key File
+  when: ssldir|success
+  no_log: True
+  copy: content="{{ ssl_key }}" dest=/etc/ssl/ansible/andrewvy.key owner=puppeteer
+
+- name: Upload Unencrypted Cert File
+  when: ssldir|success
+  no_log: True
+  copy: content="{{ ssl_crt }}" dest=/etc/ssl/ansible/andrewvy.crt owner=puppeteer
