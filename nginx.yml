@@ -4,5 +4,5 @@
      -
        role: nginx
        nginx_server_templates:
-          - filename: andrewvy.com
+          - filename: andrewvy.com.conf
             template: andrewvy.nginx.server.j2
