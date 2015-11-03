@@ -1,8 +1,7 @@
 ---
 - hosts: fox
-  remote_user: root
   vars_files:
-    - vars/main.yml
+    - roles/sapphire/vars/main.yml
 
   roles:
     - {role: "HashNuke.elixir-stack", action: "remove-app"}
