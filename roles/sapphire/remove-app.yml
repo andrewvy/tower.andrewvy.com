@@ -1,5 +1,5 @@
 ---
-- hosts: app-servers
+- hosts: fox
   remote_user: root
   vars_files:
     - vars/main.yml
