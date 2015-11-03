@@ -2,7 +2,7 @@
   roles:
      - ssl
      -
-       role: ontic.nginx
+       role: nginx
        nginx_server_templates:
           - filename: andrewvy.com
             template: andrewvy.nginx.server.j2
