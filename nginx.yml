@@ -4,5 +4,5 @@
      -
        role: ontic.nginx
        nginx_server_templates:
-          filename: andrewvy.com
-          template: default.nginx.server.j2
+          - filename: andrewvy.com
+            template: default.nginx.server.j2
