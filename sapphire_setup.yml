@@ -4,4 +4,5 @@
     - roles/sapphire/vars/main.yml
 
   roles:
+    - ssl
     - {role: "HashNuke.elixir-stack", action: "setup"}
