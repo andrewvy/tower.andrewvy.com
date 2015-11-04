@@ -6,10 +6,19 @@ upstream {{app_name}} {
 server {
     root {{ project_path }}/priv/static;
     listen 80;
+    listen 443;
+
     {% if domains | length != 0 %}
     server_name {% for domain in domains %} {{ domain }}{% endfor %};
     {% endif %}
 
+    ssl on;
+    ssl_certificate /etc/ssl/ansible/andrewvy.crt;
+    ssl_certificate_key /etc/ssl/ansible/andrewvy.key;
+
+    if ($ssl_protocol = "") {
+        rewrite ^ https://$server_name$request_uri? permanent;
+    }
 
     location / {
         proxy_pass http://{{ app_name }};
