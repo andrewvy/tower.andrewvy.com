@@ -36,5 +36,5 @@
 - name: "fetch release tar"
   fetch:
     src: "{{ project_path }}/rel/{{ app_name }}/releases/{{ app_version }}/{{ app_name }}.tar.gz"
-    dest: "/home/vy/releases"
+    dest: "/home/vy/releases/"
     flat: yes
