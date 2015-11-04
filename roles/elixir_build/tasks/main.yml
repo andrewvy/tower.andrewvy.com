@@ -7,7 +7,6 @@
   git:
     repo: "{{ repo_url }}"
     version: "{{ git_ref }}"
-    accept_hostkey: True
     force: True
     dest: "{{ project_path }}"
     ssh_opts: "-o ForwardAgent=yes"
