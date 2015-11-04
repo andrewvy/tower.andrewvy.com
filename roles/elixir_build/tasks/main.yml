@@ -16,7 +16,7 @@
   environment:
     MIX_ENV: "{{ mix_env }}"
 - name: "dry compile"
-  command: bash -lc "mix compile" chdir="{{ project_path }}"
+  command: bash -lc "MIX_ENV=prod mix compile" chdir="{{ project_path }}"
 - name: "get release version"
   command: bash -lc "mix run -e 'IO.puts Mix.Project.config[:version]'" chdir="{{ project_path }}"
   register: app_version
