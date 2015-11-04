@@ -1,0 +1,18 @@
+---
+- name: "ensure repo projects directory"
+  file: path="~/projects" state=directory
+- name: "fetch repo"
+  git:
+    repo: "{{ repo_url }}"
+    version: "{{ git_ref }}"
+    accept_hostkey: True
+    force: True
+- name: "install repo dependencies"
+  command: bash -lc "mix deps.get" chdir="{{ project_path }}"
+  environment:
+    MIX_ENV: "{{ mix_env }}"
+- name: "build release"
+  command: bash -lc 'SERVER=1 mix release' chdir="{{ project_path }}"
+  environment:
+    MIX_ENV: "{{ mix_env }}"
+    PORT: "{{ app_port }}"
