@@ -35,7 +35,7 @@
 
 - name: add and commit the release
   command: git add -A chdir="{{ project_path }}"
-- command: git commit -m "recompiled assets for {{ env }} --skip-ci" chdir="{{ project_path }}"
+- command: git commit -m "Compiled release version {{ app_version }}" chdir="{{ project_path }}"
   ignore_errors: yes
 - shell: git tag -a "{{ app_version }}" -m 'build server compiled' chdir="{{ project_path }}"
   sudo: yes
