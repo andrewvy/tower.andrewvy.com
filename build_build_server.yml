@@ -1,4 +1,5 @@
 - hosts: build_servers
+  accelerate: true
   sudo: no
   roles:
     - elixir_build
