@@ -34,7 +34,6 @@
     PORT: "{{ app_port }}"
 
 - name: "fetch release tar"
-  sudo: yes
   fetch:
     src: "{{ project_path }}/rel/{{ app_name }}/releases/{{ app_version }}/{{ app_name }}.tar.gz"
     dest: "/home/vy/releases/"
