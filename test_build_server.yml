@@ -1,0 +1,13 @@
+---
+- hosts: build_servers
+  sudo: no
+  tasks:
+    - shell: echo "Client= [$SSH_CLIENT] Sock= [$SSH_AUTH_SOCK]"
+      register: myecho
+    - debug: msg="{{myecho.stdout}}"
+    - shell: ssh-add -l
+      register: myecho
+    - debug: msg="{{myecho.stdout}}"
+    - shell: ssh -T -vvvv git@github.com
+      register: myecho
+    - debug: msg="{{myecho.stdout}}"
