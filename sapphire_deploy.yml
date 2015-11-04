@@ -1,7 +1,0 @@
----
-- hosts: sapphire
-  vars_files:
-    - roles/sapphire/vars/main.yml
-
-  roles:
-    - {role: "HashNuke.elixir-stack", action: "deploy"}

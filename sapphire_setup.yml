@@ -1,8 +1,0 @@
----
-- hosts: sapphire
-  vars_files:
-    - roles/sapphire/vars/main.yml
-
-  roles:
-    - ssl
-    - {role: "HashNuke.elixir-stack", action: "setup"}
