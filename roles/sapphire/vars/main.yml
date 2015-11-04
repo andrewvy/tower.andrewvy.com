@@ -4,4 +4,3 @@ repo_url: "git@github.com:andrewvy/sapphire.git"
 app_port: 3001
 domains: ["fox.andrewvy.com"]
 deployer: puppeteer
-setup_postgres: False
