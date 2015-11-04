@@ -1,8 +1,10 @@
 ---
 - name: "clean old repo"
   file: path="{{ project_path }}" state=absent
+
 - name: "ensure repo projects directory"
   file: path="~/projects" state=directory
+
 - name: "fetch repo"
   git:
     repo: "{{ repo_url }}"
@@ -11,21 +13,26 @@
     force: True
     dest: "{{ project_path }}"
     ssh_opts: "-o ForwardAgent=yes"
+
 - name: "install repo dependencies"
   command: bash -lc "mix deps.get" chdir="{{ project_path }}"
   environment:
     MIX_ENV: "{{ mix_env }}"
+
 - name: "dry compile"
   command: bash -lc "MIX_ENV=prod mix compile" chdir="{{ project_path }}"
+
 - name: "get release version"
   command: bash -lc "mix run -e 'IO.puts \"RELEASE_VERSION=\" <> Mix.Project.config[:version]' | grep RELEASE_VERSION | sed 's/RELEASE_VERSION=//'" chdir="{{ project_path }}"
   register: app_version_result
-  set_fact: app_version="{{ app_version_result.stdout }}"
+- set_fact: app_version="{{ app_version_result.stdout }}"
+
 - name: "build release"
   command: bash -lc 'SERVER=1 mix release' chdir="{{ project_path }}"
   environment:
     MIX_ENV: "{{ mix_env }}"
     PORT: "{{ app_port }}"
+
 - name: "fetch release tar"
   fetch:
     src: "{{ project_path }}/rel/{{ app_name }}/releases/{{ app_version }}/{{ app_name }}.tar.gz"
