@@ -10,6 +10,7 @@
     accept_hostkey: True
     force: True
     dest: "{{ project_path }}"
+    ssh_opts: "-o ForwardAgent=yes"
 - name: "install repo dependencies"
   command: bash -lc "mix deps.get" chdir="{{ project_path }}"
   environment:
