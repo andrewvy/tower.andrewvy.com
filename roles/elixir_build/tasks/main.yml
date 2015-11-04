@@ -1,4 +1,6 @@
 ---
+- name: "clean old repo"
+  file: path="{{ project_path }}" state=absent
 - name: "ensure repo projects directory"
   file: path="~/projects" state=directory
 - name: "fetch repo"
@@ -7,6 +9,7 @@
     version: "{{ git_ref }}"
     accept_hostkey: True
     force: True
+    dest: "{{ project_path }}"
 - name: "install repo dependencies"
   command: bash -lc "mix deps.get" chdir="{{ project_path }}"
   environment:
