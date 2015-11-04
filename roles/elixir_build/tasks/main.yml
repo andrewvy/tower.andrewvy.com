@@ -24,4 +24,4 @@
   command: bash -lc "mix run -e 'IO.puts Mix.Project.config[:version]'" chdir="{{ project_path }}"
   register: app_version
 - name: "fetch release tar"
-  fetch: src="{{ project_path }}"/rel/"{{ app_name }}"/releases/"{{ app_version }}"/"{{ app_name }}".tar.gz dest="/tmp"
+  fetch: src="{{ project_path }}/rel/{{ app_name }}/releases/{{ app_version }}/{{ app_name }}.tar.gz" dest=/tmp
