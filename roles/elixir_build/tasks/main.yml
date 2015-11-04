@@ -4,6 +4,7 @@
 - name: "ensure repo projects directory"
   file: path="~/projects" state=directory
 - name: "fetch repo"
+  sudo: no
   git:
     repo: "{{ repo_url }}"
     version: "{{ git_ref }}"
