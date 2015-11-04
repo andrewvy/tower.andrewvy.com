@@ -1,4 +1,4 @@
 - hosts: build_servers
-  sudo: yes
+  sudo: no
   roles:
     - elixir_build
