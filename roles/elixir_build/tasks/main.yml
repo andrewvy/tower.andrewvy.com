@@ -33,14 +33,3 @@
     MIX_ENV: "{{ mix_env }}"
     PORT: "{{ app_port }}"
 
-- name: add and commit the release
-  command: git add -A chdir="{{ project_path }}"
-- command: git commit -m "Compiled release version {{ app_version }}" chdir="{{ project_path }}"
-  ignore_errors: yes
-- shell: git tag -a "{{ app_version }}" -m 'build server compiled' chdir="{{ project_path }}"
-  sudo: yes
-  ignore_errors: yes
-
-- name: push this up to origin
-  command: git push origin {{ git_ref }} --tags chdir="{{ project_path }}"
-  ignore_errors: yes

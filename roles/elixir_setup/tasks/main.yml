@@ -3,3 +3,5 @@
   command: bash -lc "mix local.hex --force"
 - name: "install rebar"
   command: bash -lc "mix local.rebar --force"
+- name: "ensure projects directory"
+  file: path="~/projects" state=directory

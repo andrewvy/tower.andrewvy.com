@@ -1,0 +1,4 @@
+- hosts: to_setup
+  sudo: yes
+  roles:
+      - droplet_setup
