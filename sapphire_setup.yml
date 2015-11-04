@@ -1,5 +1,5 @@
 ---
-- hosts: fox
+- hosts: sapphire
   vars_files:
     - roles/sapphire/vars/main.yml
 
