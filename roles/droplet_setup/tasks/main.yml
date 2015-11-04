@@ -1,17 +1,4 @@
 ---
-- name: "create puppeteer user"
-  user: name=puppeteer shell=/bin/bash
+- include: puppeteer_user.yml
 
-- name: "read authorized keys from root user"
-  command: "cat ~/.ssh/authorized_keys"
-  register: "root_authorized_keys"
-
-- name: "create .ssh dir for deployer"
-  file: path="/home/puppeteer/.ssh" state=directory
-
-- name: "copy authorized keys to puppeteer user"
-  shell: "echo '{{root_authorized_keys.stdout}}' > /home/puppeteer/.ssh/authorized_keys"
-
-- name: "chown the authorized_keys file"
-  file: path="/home/puppeteer/.ssh" recurse=yes mode=0700 owner=puppeteer
-
+- include: ssh_config.yml
