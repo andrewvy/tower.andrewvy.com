@@ -4,7 +4,6 @@
     repo: "{{ repo_url }}"
     version: "{{ git_ref }}"
     dest: "{{ project_path }}"
-    accept_hostkey: True
     force: True
   remote_user: "{{ deployer }}"
 
