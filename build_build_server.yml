@@ -1,5 +1,4 @@
 - hosts: build_servers
-  pipelining: True
   sudo: no
   roles:
     - elixir_build
