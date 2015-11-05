@@ -1,0 +1,8 @@
+- hosts: production
+  roles:
+     - ssl
+     -
+       role: nginx
+       nginx_server_templates:
+          - filename: andrewvy.com.conf
+            template: falco.nginx.server.j2

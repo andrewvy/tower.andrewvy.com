@@ -1,0 +1,32 @@
+# {{ ansible_managed }}
+
+upstream my_app {
+    server 127.0.0.1:3000;
+}
+
+server {
+	listen 80 default_server;
+	listen 443 default_server;
+
+	listen [::]:80 default_server ipv6only=on;
+	root /usr/share/nginx/html;
+	index index.html index.htm;
+
+	ssl on;
+	ssl_certificate /etc/ssl/ansible/andrewvy.crt;
+	ssl_certificate_key /etc/ssl/ansible/andrewvy.key;
+
+    location / {
+        try_files $uri @proxy;
+    }
+
+    location @proxy {
+        include proxy_params;
+        proxy_redirect off;
+        proxy_pass https://my_app;
+    }
+
+	if ($ssl_protocol = "") {
+		rewrite ^ https://$server_name$request_uri? permanent;
+	}
+}
