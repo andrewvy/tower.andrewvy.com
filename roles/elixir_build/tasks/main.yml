@@ -42,7 +42,7 @@
 - name: "create app name version file"
   file:
     path: "{{ project_path }}/{{ app_name }}_version"
-    state: file
+    state: touch
 
 - name: "update app name version file"
   lineinfile:
