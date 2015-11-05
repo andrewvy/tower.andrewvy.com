@@ -38,3 +38,18 @@
     src: "{{ project_path }}/rel/{{ app_name }}/releases/{{ app_version }}/{{ app_name }}.tar.gz"
     dest: "~/releases/"
     flat: yes
+
+- name: "remove old app name version file"
+  file:
+    path: "~/releases/{{ app_name }}_version"
+    state: absent
+
+- name: "create app name version file"
+  file:
+    path: "~/releases/{{ app_name }}_version"
+    state: file
+
+- name: "update app name version file"
+  lineinfile:
+    dest: "~/releases/{{ app_name }}_version"
+    line: "{{ app_version }}"
