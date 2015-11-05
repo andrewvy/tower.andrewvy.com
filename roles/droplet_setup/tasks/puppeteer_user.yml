@@ -15,5 +15,8 @@
 - name: "chown the authorized_keys file"
   file: path="/home/puppeteer/.ssh" recurse=yes mode=0700 owner=puppeteer
 
+- name: "copy ssh config"
+  template: src=ssh_config dest=/home/puppeteer/.ssh/config mode=0700 owner=puppeteer
+
 - name: "ensure sudoer permission"
   lineinfile: "dest=/etc/sudoers state=present line='puppeteer  ALL=(ALL)       NOPASSWD: ALL'"
