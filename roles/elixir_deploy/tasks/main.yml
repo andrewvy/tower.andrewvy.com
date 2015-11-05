@@ -17,6 +17,15 @@
 - name: "ensure app name dir"
   file: path="~/apps/{{ app_name }}" state=directory
 
+- name: "copy app version"
+  copy:
+    src: "~/releases/{{ app_name }}_version"
+    dest: "~/apps/{{ app_name }}/"
+
+- name: "get saved version"
+  command: bash -lc "cat ~/apps/{{ app_name }}/{{ app_name }}_version"
+  register: app_version
+
 # ------
 # ACTION == "START"
 # ------
