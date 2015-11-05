@@ -1,5 +1,4 @@
 - hosts: to_setup
   sudo: yes
-  remote_user: root
   roles:
       - droplet_setup

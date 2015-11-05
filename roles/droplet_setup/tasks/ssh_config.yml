@@ -1,6 +1,8 @@
 ---
   - name: Disallow password authentication
+    remote_user: root
     action: lineinfile dest=/etc/ssh/sshd_config regexp="^PasswordAuthentication" line="PasswordAuthentication no" state=present
 
   - name: Restart ssh
+    remote_user: root
     service: name=sshd state=restarted
