@@ -5,7 +5,7 @@
 # to the deploy role.
 
 - vars:
-  app_version: "{{ lookup('file', '~/releases/{{ app_name }}_version') }}"
+    app_version: "{{ lookup('file', '~/releases/{{ app_name }}_version') }}"
 
 - name: "ensure releases dir"
   file: path="~/releases" state=directory
