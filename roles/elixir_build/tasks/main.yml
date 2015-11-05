@@ -19,6 +19,11 @@
   environment:
     MIX_ENV: "{{ mix_env }}"
 
+- name: "compile repo dependencies"
+  command: bash -lc "mix deps.compile" chdir="{{ project_path }}"
+  environment:
+    MIX_ENV: "{{ mix_env }}"
+
 - name: "dry compile"
   command: bash -lc "MIX_ENV=prod mix compile" chdir="{{ project_path }}"
 
