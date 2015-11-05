@@ -48,10 +48,10 @@
     state: "directory"
 
 - when: action == "upgrade"
-  name: "copy release tar to its release version folder"
-  copy:
+  name: "extract release tar to hosts"
+  unarchive:
     src: "~/releases/{{ app_name }}.tar.gz"
-    dest: "~/apps/{{ app_name }}/releases/{{ app_version }}/"
+    dest: "~/apps/{{ app_name }}/"
 
 - when: action == "upgrade"
   name: "perform hot code upgrade"
