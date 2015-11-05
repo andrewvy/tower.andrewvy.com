@@ -39,17 +39,18 @@
     dest: "~/releases/"
     flat: yes
 
-- name: "remove old app name version file"
-  file:
-    path: "~/releases/{{ app_name }}_version"
-    state: absent
-
 - name: "create app name version file"
   file:
-    path: "~/releases/{{ app_name }}_version"
+    path: "{{ project_path }}/{{ app_name }}_version"
     state: file
 
 - name: "update app name version file"
   lineinfile:
-    dest: "~/releases/{{ app_name }}_version"
+    dest: "{{ project_path }}/{{ app_name }}_version"
     line: "{{ app_version }}"
+
+- name: "fetch app name version file to local"
+  fetch:
+    src: "{{ project_path }}/{{ app_name }}_version"
+    dest: "~/releases/"
+    flat: yes
