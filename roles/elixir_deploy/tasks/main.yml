@@ -3,10 +3,10 @@
   file: path="~/releases" state=directory
 
 - name: "ensure apps dir"
-  file: path="~/app" state=directory
+  file: path="~/apps" state=directory
 
 - name: "ensure app name dir"
-  file: path="~/app/{{ app_name }}" state=directory
+  file: path="~/apps/{{ app_name }}" state=directory
 
 - name: "extract release tar to hosts"
   unarchive:
