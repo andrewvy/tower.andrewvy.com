@@ -15,4 +15,4 @@
 - hosts: production
   sudo: no
   roles:
-    - elixir_deploy { action: "upgrade" }
+    - { role: "elixir_deploy", action: "upgrade" }

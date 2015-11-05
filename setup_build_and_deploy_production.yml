@@ -5,4 +5,4 @@
 - hosts: production
   sudo: no
   roles:
-    - elixir_deploy { action: "start" }
+    - { role: "elixir_deploy", action: "start" }
