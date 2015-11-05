@@ -4,10 +4,6 @@
 # is done at the build role and needs to transfer over
 # to the deploy role.
 
-- hosts: all
-  vars:
-    app_version: "{{ lookup('file', '~/releases/{{ app_name }}_version') }}"
-
 - name: "ensure releases dir"
   file: path="~/releases" state=directory
 
