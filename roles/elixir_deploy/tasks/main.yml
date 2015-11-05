@@ -51,7 +51,7 @@
   name: "copy release tar to its release version folder"
   copy:
     src: "~/releases/{{ app_name }}.tar.gz"
-    dest: "~/apps/{{ app_name }}/releases{{ app_version }}/"
+    dest: "~/apps/{{ app_name }}/releases/{{ app_version }}/"
 
 - when: action == "upgrade"
   name: "perform hot code upgrade"
