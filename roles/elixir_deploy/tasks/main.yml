@@ -48,11 +48,7 @@
     state: "directory"
 
 - when: action == "upgrade"
-  name: "extract release tar to hosts"
-  unarchive:
+  name: "copy release tar to its release version folder"
+  copy:
     src: "~/releases/{{ app_name }}.tar.gz"
-    dest: "~/apps/{{ app_name }}/"
-
-- when: action == "upgrade"
-  name: "perform hot code upgrade"
-  command: bash -lc "PORT=3000 ~/apps/{{ app_name }}/bin/{{ app_name }} upgrade {{ app_version }}"
+    dest: "~/apps/{{ app_name }}/releases/{{ app_version }}/"
