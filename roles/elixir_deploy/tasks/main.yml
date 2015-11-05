@@ -20,7 +20,8 @@
 
 - name: "get saved version"
   command: bash -lc "cat ~/apps/{{ app_name }}/{{ app_name }}_version"
-  register: app_version
+  register: app_version_result
+- set_fact: app_version="{{ app_version_result.stdout }}"
 
 # ------
 # ACTION == "START"
