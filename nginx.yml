@@ -1,4 +1,4 @@
-- hosts: fox
+- hosts: nginx
   roles:
      - ssl
      -

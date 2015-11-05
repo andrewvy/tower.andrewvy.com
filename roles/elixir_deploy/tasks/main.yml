@@ -1,0 +1,23 @@
+---
+- name: "ensure releases dir"
+  file: path="~/releases" state=directory
+
+- name: "ensure apps dir"
+  file: path="~/app" state=directory
+
+- name: "ensure app name dir"
+  file: path="~/app/{{ app_name }}" state=directory
+
+- name: "fetch release tar to local"
+  fetch:
+    src: "{{ project_path }}/rel/{{ app_name }}/releases/{{ app_version }}/{{ app_name }}.tar.gz"
+    dest: "~/releases/{{ app_name }}.{{ app_version }}.tar.gz"
+    flat: yes
+
+- name: "extract release tar to hosts"
+  unarchive:
+    src: "~/releases/{{ app_name }}.{{ app_version }}.tar.gz"
+    dest: "~/apps/{{ app_name }}"
+
+- name: "run app"
+  command: bash -lc "PORT=3000 ~/apps/{{ app_name }}/bin/{{ app_name }} start"

@@ -32,4 +32,3 @@
   environment:
     MIX_ENV: "{{ mix_env }}"
     PORT: "{{ app_port }}"
-
