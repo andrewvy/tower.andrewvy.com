@@ -35,6 +35,6 @@
 
 - name: "fetch release tar to local"
   fetch:
-    src: "{{ project_path }}/rel/{{ app_name }}/releases/{{ hostvars['build_servers']['app_version'] }}/{{ app_name }}.tar.gz"
+    src: "{{ project_path }}/rel/{{ app_name }}/releases/{{ app_version }}/{{ app_name }}.tar.gz"
     dest: "~/releases/"
     flat: yes
