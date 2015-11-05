@@ -33,6 +33,9 @@
     MIX_ENV: "{{ mix_env }}"
     PORT: "{{ app_port }}"
 
+- name: "clean up after release"
+  command: bash -lc 'mix release.clean' chdir="{{ project_path }}"
+
 - name: "add and commit the release"
   command: git add -A chdir="{{ project_path }}"
 - command: git commit -m "compiled release {{ app_version }}" chdir="{{ project_path }}"
