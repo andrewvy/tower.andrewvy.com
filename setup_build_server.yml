@@ -2,4 +2,4 @@
   sudo: yes
   roles:
       - { role: ohr486.elixir, erlang_version: 18.1, elixir_version: v1.1.1 }
-      - elixir_setup
+      - { role: "elixir", action: "setup" }

@@ -1,4 +1,4 @@
 - hosts: build_servers
   sudo: no
   roles:
-    - elixir_build
+    - { role: "elixir", action: "build" }

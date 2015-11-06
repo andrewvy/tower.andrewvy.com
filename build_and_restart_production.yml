@@ -2,9 +2,9 @@
 - hosts: build_servers
   sudo: no
   roles:
-    - elixir_build
+    - { role: "elixir", action: "build" }
 
 - hosts: production
   sudo: no
   roles:
-    - { role: "elixir_deploy", action: "restart" }
+    - { role: "elixir", action: "restart" }
