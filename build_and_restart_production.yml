@@ -1,0 +1,10 @@
+---
+- hosts: build_servers
+  sudo: no
+  roles:
+    - elixir_build
+
+- hosts: production
+  sudo: no
+  roles:
+    - { role: "elixir_deploy", action: "restart" }

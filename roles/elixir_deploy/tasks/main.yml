@@ -52,3 +52,17 @@
   copy:
     src: "~/releases/{{ app_name }}.tar.gz"
     dest: "~/apps/{{ app_name }}/releases/{{ app_version }}/"
+
+# ------
+# ACTION == "RESTART"
+# ------
+
+- when: action == "restart"
+  name: "extract release tar to hosts"
+  unarchive:
+    src: "~/releases/{{ app_name }}.tar.gz"
+    dest: "~/apps/{{ app_name }}/"
+
+- when: action == "restart"
+  name: "run app"
+  command: bash -lc "PORT=3000 ~/apps/{{ app_name }}/bin/{{ app_name }} restart"
