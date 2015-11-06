@@ -35,12 +35,6 @@
     MIX_ENV: "{{ mix_env }}"
     PORT: "{{ app_port }}"
 
-- name: "fetch release tar to local"
-  fetch:
-    src: "{{ project_path }}/rel/{{ app_name }}/releases/{{ app_version }}/{{ app_name }}.tar.gz"
-    dest: "~/releases/"
-    flat: yes
-
 - name: "add and commit the release"
   command: git add -A chdir="{{ project_path }}"
 - command: git commit -m "compiled release {{ app_version }}" chdir="{{ project_path }}"
@@ -51,6 +45,12 @@
 - name: "push release to origin"
   command: git push origin "{{ git_ref }}" --tags chdir="{{ project_path }}"
   ignore_errors: yes
+
+- name: "fetch release tar to local"
+  fetch:
+    src: "{{ project_path }}/rel/{{ app_name }}/releases/{{ app_version }}/{{ app_name }}.tar.gz"
+    dest: "~/releases/"
+    flat: yes
 
 - name: "create app name version file"
   file:
