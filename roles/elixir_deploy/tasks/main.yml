@@ -53,6 +53,10 @@
     src: "~/releases/{{ app_name }}.tar.gz"
     dest: "~/apps/{{ app_name }}/releases/{{ app_version }}/"
 
+- when: action == "upgrade"
+  name: "run app"
+  command: bash -lc "PORT=3000 ~/apps/{{ app_name }}/bin/{{ app_name }} upgrade {{ app_version }}"
+
 # ------
 # ACTION == "RESTART"
 # ------
