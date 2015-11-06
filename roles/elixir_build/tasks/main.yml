@@ -24,9 +24,6 @@
   environment:
     MIX_ENV: "{{ mix_env }}"
 
-- name: "dry compile"
-  command: bash -lc "MIX_ENV=prod mix compile" chdir="{{ project_path }}"
-
 - name: "get release version"
   command: bash -lc "mix run -e 'IO.puts \"RELEASE_VERSION=\" <> Mix.Project.config[:version]' | grep RELEASE_VERSION | sed 's/RELEASE_VERSION=//'" chdir="{{ project_path }}"
   register: app_version_result
@@ -43,9 +40,6 @@
     src: "{{ project_path }}/rel/{{ app_name }}/releases/{{ app_version }}/{{ app_name }}.tar.gz"
     dest: "~/releases/"
     flat: yes
-
-- name: "clean up after release"
-  command: bash -lc 'mix release.clean' chdir="{{ project_path }}"
 
 - name: "add and commit the release"
   command: git add -A chdir="{{ project_path }}"
