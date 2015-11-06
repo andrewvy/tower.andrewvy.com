@@ -1,8 +1,8 @@
 - hosts: build_servers
   sudo: no
   roles:
-    - { role: "elixir", action: "build" }
+    - { role: "andrewvy.elixir", action: "build" }
 - hosts: production
   sudo: no
   roles:
-    - { role: "elixir", action: "start" }
+    - { role: "andrewvy.elixir", action: "start" }
